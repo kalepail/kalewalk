@@ -1,0 +1,27 @@
+{
+  "version": "0.0.0",
+  "name": "kalewalk-sdk",
+  "dependencies": {
+    "@stellar/freighter-api": "1.7.1",
+    "buffer": "6.0.3",
+    "@stellar/stellar-sdk": "git+https://github.com/tyvdh/js-stellar-sdk.git#293f3f2ae5795abbf5a477ae8595e724688b5335",
+    "@vespaiach/axios-fetch-adapter": "^0.3.1",
+    "axios": "^0.26.1"
+  },
+  "overrides": {
+    "@stellar/stellar-sdk": {
+      "axios": "$axios"
+    }
+  },
+  "scripts": {
+    "build": "node ./scripts/build.mjs"
+  },
+  "exports": {
+    "require": "./dist/cjs/index.js",
+    "import": "./dist/esm/index.js"
+  },
+  "typings": "dist/types/index.d.ts",
+  "devDependencies": {
+    "typescript": "5.3.3"
+  }
+}

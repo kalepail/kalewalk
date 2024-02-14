@@ -1,0 +1,2 @@
+- If you update an image we need to update the image as well
+    - Probably need to bring back the post endpoint which will re-request the endpoint and overwrite any existing image

@@ -1,0 +1,33 @@
+name = "kalewalk-api"
+main = "src/index.ts"
+compatibility_date = "2024-01-29"
+compatibility_flags = [ "nodejs_compat" ]
+workers_dev = true
+
+browser = { binding = "BROWSER" }
+
+# Bind a Queue producer. Use this binding to schedule an arbitrary task that may be processed later by a Queue consumer.
+# Docs: https://developers.cloudflare.com/queues/get-started
+[[queues.producers]]
+binding = "KALEWALK_QUEUE"
+queue = "kalewalk-queue"
+
+# Bind a Queue consumer. Queue Consumers can retrieve tasks scheduled by Producers to act on them.
+# Docs: https://developers.cloudflare.com/queues/get-started
+[[queues.consumers]]
+queue = "kalewalk-queue"
+max_batch_size = 1
+max_concurrency = 1
+max_retries = 1
+
+[[r2_buckets]]
+binding = "KALEWALK_NFTS"
+bucket_name = "kalewalk-nfts"
+
+[[durable_objects.bindings]]
+name = "DO_BROWSER"
+class_name = "DoBrowser"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["DoBrowser"]

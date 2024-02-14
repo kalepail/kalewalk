@@ -1,0 +1,44 @@
+{
+  "name": "kalewalk",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "vite dev --host",
+    "dev": "npm run start",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "deploy": "npm run build && wrangler pages deploy .svelte-kit/cloudflare"
+  },
+  "devDependencies": {
+    "@cloudflare/puppeteer": "^0.0.5",
+    "@cloudflare/workers-types": "^4.20240129.0",
+    "@rollup/plugin-inject": "^5.0.5",
+    "@stellar/stellar-sdk": "git+https://github.com/tyvdh/js-stellar-sdk.git#293f3f2ae5795abbf5a477ae8595e724688b5335",
+    "@sveltejs/adapter-auto": "^3.1.1",
+    "@sveltejs/adapter-cloudflare": "^4.1.0",
+    "@sveltejs/adapter-cloudflare-workers": "^2.1.0",
+    "@sveltejs/kit": "^2.5.0",
+    "@sveltejs/vite-plugin-svelte": "^3.0.2",
+    "@vespaiach/axios-fetch-adapter": "^0.3.1",
+    "autoprefixer": "^10.4.17",
+    "axios": "^0.26.1",
+    "buffer": "^6.0.3",
+    "kalewalk-sdk": "file:../kalewalk-sdk",
+    "postcss": "^8.4.33",
+    "svelte": "^4.2.9",
+    "svelte-check": "^3.6.3",
+    "tailwindcss": "^3.4.1",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "wrangler": "^3.26.0"
+  },
+  "overrides": {
+    "@stellar/stellar-sdk": {
+      "axios": "$axios"
+    }
+  }
+}
